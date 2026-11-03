@@ -1,3 +1,4 @@
+
 annotations:
   anybuild.run/config:
     composer_build_script: post-update-cmd
