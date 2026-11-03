@@ -1,0 +1,36 @@
+annotations:
+  anybuild.run/config:
+    composer_build_script: post-update-cmd
+    composer_enable: true
+    name: out
+    node_build_command: npm run build
+    node_install_inputs:
+    - package.json
+    node_package_manager: npm
+    npm_version: '11'
+    php_framework: laravel
+    php_public_dir: public
+    phpix: true
+  anybuild.run/provider: laravel
+  anybuild.run/version: 0.33.2
+  wasmer.io/version: 7.5.0
+app_id: da_KwGIWtMUZkVx
+enableDatabase: true
+enable_email: true
+env:
+  PHPIX_PHP_THREADS: '4'
+jobs:
+  - name: migrate-database
+    trigger: post-deployment
+    action:
+      execute:
+        command: php
+        cli_args:
+          - artisan
+          - migrate
+          - --force
+
+kind: wasmer.io/App.v0
+name: sikadasa
+owner: hiba-c
+package: sha256:1db2c26ec0211ff4d36a654168c1ba896bc1f254b00b94e18eec7b4b911b4c70
